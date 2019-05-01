@@ -1,0 +1,30 @@
+version: '3.5'
+
+services:
+  odoo_web:
+    image: gallegogt/odoo4rpi:12.0-cl
+    depends_on:
+      - odoo_db
+    ports:
+      - "8069:8069"
+    volumes:
+      - $PWD/volumes/odoo/data_dir:/var/lib/odoo
+      - $PWD/volumes/odoo/addons:/mnt/extra-addons
+      # - ./config:/etc/odoo
+    environment:
+      HOST: odoo_db
+      # USER: odoo
+      # PASSWORD: myodoo
+    restart: always
+  odoo_db:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - POSTGRES_DB=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - $PWD/volumes/postgresql/pgdata:/var/lib/postgresql/data/pgdata
+#     environment:
+#       ENV_VAR: ENV_VAR_VALUE
+    restart: always
