@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   odoo_web:
-    image: gallegogt/odoo4rpi:12.0-cl
+    image: gallegogt/odoo4rpi:13.0-cl
     depends_on:
       - odoo_db
     ports:
