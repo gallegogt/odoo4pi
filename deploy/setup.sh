@@ -84,49 +84,49 @@ cd /tmp/odoo-addons
 rm -rf *
 
 step "Configurando KonosCL addons ..."
-try git clone --branch 11.0 https://github.com/KonosCL/addons-konos.git
+try git clone --branch 12.0 https://github.com/KonosCL/addons-konos.git
 next
 try cp -rf ./addons-konos/* $ADDONS_PATH
 next
 
 # step "Configurando dansanti/l10n_cl_dte_point_of_sale addons ..."
-# try git clone --branch 11.0 https://gitlab.com/dansanti/l10n_cl_dte_point_of_sale.git
-# next
-# try cp -rf ./l10n_cl_dte_point_of_sale $ADDONS_PATH
-# next
+try git clone --branch 12.0 https://gitlab.com/dansanti/l10n_cl_dte_point_of_sale.git
+next
+try cp -rf ./l10n_cl_dte_point_of_sale $ADDONS_PATH
+next
 
 # step "Configurando dansanti/l10n_cl_fe addons ..."
-# try git clone --branch 11.0 https://gitlab.com/dansanti/l10n_cl_fe.git
-# next
-# try cp -rf ./l10n_cl_fe $ADDONS_PATH
-# next
+try git clone --branch 12.0 https://gitlab.com/dansanti/l10n_cl_fe.git
+next
+try cp -rf ./l10n_cl_fe $ADDONS_PATH
+next
 
 step "Configurando dansanti/payment_khipu.git addons ..."
-try git clone --branch 11.0 https://gitlab.com/dansanti/payment_khipu.git
+try git clone --branch 12.0 https://gitlab.com/dansanti/payment_khipu.git
 next
 try cp -rf ./payment_khipu $ADDONS_PATH
 next
 
 step "Configurando dansanti/payment_webpay addons ..."
-try git clone --branch 11.0 https://gitlab.com/dansanti/payment_webpay.git
+try git clone --branch 12.0 https://gitlab.com/dansanti/payment_webpay.git
 next
 try cp -rf ./payment_webpay $ADDONS_PATH
 next
 
 # step "Configurando dansanti/l10n_cl_stock_picking addons ..."
-#try git clone https://gitlab.com/dansanti/l10n_cl_stock_picking.git
-# next
-# try cp -rf ./l10n_cl_stock_picking $ADDONS_PATH
-# next
+try git clone --branch 12.0 https://gitlab.com/dansanti/l10n_cl_stock_picking.git
+next
+try cp -rf ./l10n_cl_stock_picking $ADDONS_PATH
+next
 
 step "Configurando odoocoop/facturacion_electronica addons ..."
-try git clone --branch 11.0 https://github.com/odoocoop/facturacion_electronica.git
+try git clone --branch 12.0 https://github.com/odoocoop/facturacion_electronica.git
 next
 try cp -rf ./facturacion_electronica/*  $ADDONS_PATH
 next
 
 step "Configurando OCA/reporting-engine addons ..."
-try git clone --branch 11.0 https://github.com/OCA/reporting-engine.git
+try git clone --branch 13.0 https://github.com/OCA/reporting-engine.git
 next
 try cp -rf ./reporting-engine/*  $ADDONS_PATH
 next

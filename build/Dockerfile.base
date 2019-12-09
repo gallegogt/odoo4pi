@@ -32,13 +32,15 @@ RUN set -x; \
 
 # Install Odoo
 ENV ODOO_VERSION 13.0
-ENV ODOO_RELEASE 20191111
+ENV ODOO_RELEASE 20191209
 ENV WKHTMLTOPDF_VERSION 0.12.5
+ENV ODOO_SHA1 a58837eb84419a9db4256540e4a69ed9c56697f0
+ENV WKHTML_TO_PDF_SHA1 52a4512c40a53f44dcd873d8f7e295c54f285d8e
 
 RUN set -x; \
         # Install wkhtmltopdf
         curl -o  wkhtmltox.deb -SL https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/${WKHTMLTOPDF_VERSION}/wkhtmltox_${WKHTMLTOPDF_VERSION}-1.raspbian.stretch_armhf.deb \
-        && echo '52a4512c40a53f44dcd873d8f7e295c54f285d8e wkhtmltox.deb' | sha1sum -c - \
+        && /bin/bash -c 'echo $WKHTML_TO_PDF_SHA1 wkhtmltox.deb' | sha1sum -c - \
         && dpkg --force-depends -i wkhtmltox.deb \
         && apt-get update \
         && apt-get -y install -f --no-install-recommends \
@@ -47,7 +49,7 @@ RUN set -x; \
         && ln -sf /usr/local/bin/wkhtmltopdf /usr/bin/wkhtmltopdf \
         # Install Odoo
         && curl -o odoo.deb -SL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb \
-        && echo 'c58fa0fd68f57a4b831b9a334cb7f49ae2a2f3fe odoo.deb' | sha1sum -c - \
+        && /bin/bash -c 'echo $ODOO_SHA1 odoo.deb' | sha1sum -c - \
         && dpkg --force-depends -i odoo.deb \
         && apt-get -y install -f --no-install-recommends \
         && rm -rf /var/lib/apt/lists/* odoo.deb wkhtmltox.deb
